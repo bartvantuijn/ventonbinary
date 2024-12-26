@@ -1,0 +1,34 @@
+services:
+    app:
+        container_name: {PROJECT_NAME}_app
+        build:
+            context: .
+            target: {PROJECT_NAME}_app
+        image: {PROJECT_NAME}_app
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - ./:/srv/www
+        networks:
+            - venton
+
+    web:
+        container_name: {PROJECT_NAME}_web
+        build:
+            context: .
+            target: {PROJECT_NAME}_web
+        image: {PROJECT_NAME}_web
+        restart: unless-stopped
+        environment:
+            - "FPM_HOST={PROJECT_NAME}_app"
+            - "VIRTUAL_HOST={PROJECT_NAME}"
+        depends_on:
+            - app
+        volumes:
+            - ./:/srv/www
+        networks:
+            - venton
+
+networks:
+    venton:
+        external: true
