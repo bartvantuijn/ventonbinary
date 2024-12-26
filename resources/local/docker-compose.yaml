@@ -1,0 +1,44 @@
+services:
+    proxy:
+        image: jwilder/nginx-proxy:latest
+        container_name: venton_proxy
+        restart: always
+        ports:
+            - "80:80"
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+        networks:
+            venton:
+                ipv4_address: 10.1.0.2
+
+    database:
+        image: mysql:8
+        container_name: venton_database
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./database:/var/lib/mysql
+        networks:
+            venton:
+                ipv4_address: 10.1.0.3
+
+    mail:
+        image: mailhog/mailhog:latest
+        container_name: venton_mail
+        restart: always
+        environment:
+            VIRTUAL_HOST: venton_mail
+            VIRTUAL_PORT: 8025
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+        networks:
+            venton:
+                ipv4_address: 10.1.0.4
+
+networks:
+    venton:
+        external: true
