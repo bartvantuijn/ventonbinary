@@ -45,7 +45,7 @@ class OnlinqToggleCommand extends Command
         parent::__construct();
 
         $this->npmFile = VentonHelper::getHomePath() . '/.npmrc';
-        $this->composerFile = VentonHelper::getHomePath() . '/.composer/config';;
+        $this->composerFile = VentonHelper::getHomePath() . '/.composer/config.json';
     }
 
     /**
