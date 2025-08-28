@@ -1,4 +1,4 @@
-# License
+# MIT License
 
 ## Abbreviation
 
@@ -6,7 +6,7 @@ MIT
 
 ## Notice
 
-Copyright (c) 2025 Bart van Tuijn
+Copyright © 2025 Bart van Tuijn
 
 ---
 
