@@ -26,8 +26,6 @@ class LocalDownCommand extends Command
 
     /**
      * The console command docker path.
-     *
-     * @var string
      */
     private string $dockerPath;
 

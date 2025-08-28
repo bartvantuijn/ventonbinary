@@ -25,15 +25,11 @@ class OnlinqToggleCommand extends Command
 
     /**
      * The console command npm file.
-     *
-     * @var string
      */
     private string $npmFile;
 
     /**
      * The console command composer file.
-     *
-     * @var string
      */
     private string $composerFile;
 
@@ -53,9 +49,9 @@ class OnlinqToggleCommand extends Command
      */
     public function handle(): void
     {
-        $filesystem = new Filesystem();
+        $filesystem = new Filesystem;
 
-        if (!VentonHelper::getHomePath() == '') {
+        if (! VentonHelper::getHomePath() == '') {
             $this->toggleBkExtension($filesystem, $this->npmFile);
             $this->toggleBkExtension($filesystem, $this->composerFile);
         }
@@ -69,7 +65,7 @@ class OnlinqToggleCommand extends Command
         if ($filesystem->exists($original) && $this->argument('state') !== 'up') {
             $filesystem->move($original, $backup);
             $this->info('Renamed original to ' . $backup);
-        } else if ($filesystem->exists($backup) && $this->argument('state') !== 'down') {
+        } elseif ($filesystem->exists($backup) && $this->argument('state') !== 'down') {
             $filesystem->move($backup, $original);
             $this->info('Renamed backup to ' . $original);
         } else {

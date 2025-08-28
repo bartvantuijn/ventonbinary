@@ -27,15 +27,11 @@ class LocalUpCommand extends Command
 
     /**
      * The console command docker path.
-     *
-     * @var string
      */
     private string $dockerPath;
 
     /**
      * The console command resource path.
-     *
-     * @var string
      */
     private string $resourcesPath;
 
@@ -55,17 +51,17 @@ class LocalUpCommand extends Command
      */
     public function handle(): void
     {
-        $filesystem = new Filesystem();
+        $filesystem = new Filesystem;
 
         $filesystem->copyDirectory($this->resourcesPath, $this->dockerPath);
 
         $process = Process::path($this->dockerPath);
 
-        if (!$this->createDockerNetwork($process)) {
+        if (! $this->createDockerNetwork($process)) {
             return;
         }
 
-        if (!$this->createDatabaseDirectory($filesystem)) {
+        if (! $this->createDatabaseDirectory($filesystem)) {
             return;
         }
 
@@ -98,7 +94,7 @@ class LocalUpCommand extends Command
     {
         $databasePath = $this->dockerPath . '/database';
 
-        if (!$filesystem->exists($databasePath)) {
+        if (! $filesystem->exists($databasePath)) {
             if ($filesystem->makeDirectory($databasePath, 0755, true)) {
                 $this->info('Database directory created successfully.');
             } else {
