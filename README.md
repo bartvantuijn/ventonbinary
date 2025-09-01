@@ -6,7 +6,7 @@ A fast and lightweight developer CLI built with [Laravel Zero][laravel-zero], de
 
 ---
 
-> Please note that Venton Binary is still under active development
+> Please note that **Venton Binary** is still under active development
 
 ## Installation
 
