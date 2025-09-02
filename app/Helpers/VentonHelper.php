@@ -9,7 +9,7 @@ class VentonHelper
 {
     public static function getHomePath(): string
     {
-        //todo: set up for other families
+        // todo: set up for other families
         if (PHP_OS_FAMILY === 'Darwin') {
             return $_SERVER['HOME'];
         } else {
