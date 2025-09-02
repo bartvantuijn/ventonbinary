@@ -1,7 +1,9 @@
 {
-    "name": "venton/binary",
-    "description": "CLI tool for general tasks.",
+    "name": "bartvantuijn/ventonbinary",
+    "description": "A fast and lightweight developer CLI built with Laravel Zero, designed to simplify local workflows, manage Docker environments, and automate repetitive developer tasks",
     "type": "project",
+    "keywords": ["ventonbinary", "laravel", "docker"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Bart van Tuijn",
